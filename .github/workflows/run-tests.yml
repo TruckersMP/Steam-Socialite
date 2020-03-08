@@ -1,0 +1,22 @@
+name: "Run Tests"
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Validate composer.json and composer.lock
+        run: composer validate
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
+
+      - name: Run PHPCS tests
+        run: vendor/bin/phpcs src tests/Unit --standard=PSR12
+
+      - name: Run test suite
+        run: vendor/bin/phpunit
