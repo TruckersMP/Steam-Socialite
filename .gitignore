@@ -1,1 +1,13 @@
-vendor/
+# Composer
+composer.phar
+/vendor/
+
+# PHPStorm
+/.idea/
+
+# Unit Tests
+/tests/cache/
+.phpunit.result.cache
+
+# Mac OS
+.DS_Store
