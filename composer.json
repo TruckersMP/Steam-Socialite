@@ -48,11 +48,5 @@
             "./vendor/bin/phpunit"
         ]
     },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "stable-master",
-            "dev-develop": "develop"
-        }
-    },
     "prefer-stable": true
 }
