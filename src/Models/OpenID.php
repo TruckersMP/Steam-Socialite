@@ -43,6 +43,7 @@ class OpenID implements OpenIDContract
      * Create a new model instance for OpenID interface.
      *
      * @param string $authUrl
+     *
      * @return void
      */
     public function __construct(string $authUrl)
@@ -54,6 +55,7 @@ class OpenID implements OpenIDContract
      * Get the OpenID authorization URL.
      *
      * @param string $returnTo
+     *
      * @return string
      */
     public function getAuthUrl(string $returnTo): string
@@ -75,6 +77,7 @@ class OpenID implements OpenIDContract
      * Validate the request parameters.
      *
      * @param Request $request
+     *
      * @return bool
      */
     public function validate(Request $request): bool
@@ -101,6 +104,7 @@ class OpenID implements OpenIDContract
      * Parse the OpenID response to a Fluent object.
      *
      * @param string $response
+     *
      * @return Fluent
      */
     protected function parseResult(string $response): Fluent
@@ -124,6 +128,7 @@ class OpenID implements OpenIDContract
      * Get the request parameters for the authorization page.
      *
      * @param string $returnTo
+     *
      * @return array
      */
     protected function getAuthParameters(string $returnTo): array
@@ -141,6 +146,7 @@ class OpenID implements OpenIDContract
      * Get parameters for the OpenID validation request.
      *
      * @param Request $request
+     *
      * @return array
      */
     protected function getValidationParameters(Request $request): array
