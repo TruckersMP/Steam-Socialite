@@ -19,6 +19,7 @@ enabled:
   - strict_comparison
 
 disabled:
+  - align_double_arrow
   - concat_without_spaces
   - no_unneeded_control_parentheses
   # PHP documentation should not be that strict

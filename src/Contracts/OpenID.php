@@ -9,7 +9,7 @@ interface OpenID
     /**
      * Get the OpenID authorization URL.
      *
-     * @param  string  $returnTo
+     * @param string $returnTo
      * @return string
      */
     public function getAuthUrl(string $returnTo): string;
@@ -24,7 +24,7 @@ interface OpenID
     /**
      * Validate the request parameters.
      *
-     * @param  Request  $request
+     * @param Request $request
      * @return bool
      */
     public function validate(Request $request): bool;

@@ -47,5 +47,12 @@
             "./vendor/bin/phpcs src tests/Unit --standard=PSR12",
             "./vendor/bin/phpunit"
         ]
-    }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "stable-master",
+            "dev-develop": "develop"
+        }
+    },
+    "prefer-stable": true
 }

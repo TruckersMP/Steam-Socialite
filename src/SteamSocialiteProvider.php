@@ -16,7 +16,7 @@ class SteamSocialiteProvider extends ServiceProvider
      *
      * @throws BindingResolutionException
      */
-    public function boot()
+    public function boot(): void
     {
         $socialite = $this->app->make(Factory::class);
 
