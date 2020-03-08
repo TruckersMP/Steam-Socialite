@@ -39,6 +39,7 @@ class SteamProvider extends AbstractProvider
      * Get the authentication URL for the provider.
      *
      * @param string $state
+     *
      * @return string
      */
     protected function getAuthUrl($state): string
@@ -79,6 +80,7 @@ class SteamProvider extends AbstractProvider
      * As Steam uses OpenID, no token is passed. Instead, the Steam ID is used.
      *
      * @param string $token
+     *
      * @return array
      */
     protected function getUserByToken($token): array
@@ -101,6 +103,7 @@ class SteamProvider extends AbstractProvider
      * Map the raw user array to a Socialite User instance.
      *
      * @param array $user
+     *
      * @return User
      */
     protected function mapUserToObject(array $user): User
