@@ -41,6 +41,10 @@ should be placed in your `config/services.php` configuration file:
 ],
 ```
 
+As OpenID does not use the `client_id` and `client_secret` properties, the latter
+is actually utilized as the Steam API key and is used for fetching the user data.
+For more information about the API, check the [Steam developer portal][steam-dev].
+
 Do not forget to put new environment variables into your `.env` application file:
 
 ```dotenv
@@ -83,4 +87,5 @@ This package is open-source and is licensed under the [MIT license](LICENSE.md).
 [laravel-socialite]: https://github.com/laravel/socialite
 [laravel-framework]: https://github.com/laravel/framework
 [laravel-socialite-doc]: https://laravel.com/docs/master/socialite
+[steam-dev]: https://steamcommunity.com/dev/
 [developer-forum]: https://forum.truckersmp.com/index.php?/forum/198-developer-portal/
