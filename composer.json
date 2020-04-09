@@ -42,7 +42,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "TruckersMP\\SteamSocialite\\SteamServiceProvider"
+                "TruckersMP\\SteamSocialite\\SteamSocialiteProvider"
             ]
         }
     },

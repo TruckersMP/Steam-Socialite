@@ -53,7 +53,9 @@ STEAM_SECRET=
 STEAM_REDIRECT_URI=
 ```
 
-Before being able to use the Steam Socialite driver, register the provider in your
+**Laravel 5.5+** uses Package Auto-Discovery, so doesn't require you to manually add the SteamSocialiteProvider.
+
+If you don't use auto-discovery, you will need register the provider in your
 `config/app.php` configuration file as a package service provider:
 
 ```php
