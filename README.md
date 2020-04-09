@@ -53,9 +53,10 @@ STEAM_SECRET=
 STEAM_REDIRECT_URI=
 ```
 
-**Laravel 5.5+** uses Package Auto-Discovery, so doesn't require you to manually add the SteamSocialiteProvider.
+**Laravel 5.5+** uses Package Auto-Discovery, so does not require you to manually
+add the `SteamSocialiteProvider`.
 
-If you don't use auto-discovery, you will need register the provider in your
+If you do not use auto-discovery, you will need register the provider in your
 `config/app.php` configuration file as a package service provider:
 
 ```php
