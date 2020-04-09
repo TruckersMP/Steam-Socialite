@@ -39,6 +39,13 @@
             "TruckersMP\\SteamSocialite\\Tests\\": "tests/"
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "TruckersMP\\SteamSocialite\\SteamServiceProvider"
+            ]
+        }
+    },
     "config": {
         "sort-packages": true
     },
