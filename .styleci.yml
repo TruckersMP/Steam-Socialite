@@ -5,7 +5,6 @@ enabled:
   - const_separation
   - const_visibility_required
   - linebreak_after_opening_tag
-  - logical_operators
   - multiline_comment_opening_closing
   - no_blank_lines_after_return
   - no_extra_block_blank_lines
