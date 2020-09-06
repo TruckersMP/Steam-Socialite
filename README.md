@@ -19,7 +19,7 @@ an adapter for the Steam OpenID authentication.
 - PHP 7.3
 - Composer
 - [Laravel 6.x][laravel-framework] (or newer)
-- [Laravel Socialite 4.2][laravel-socialite] (or newer)
+- [Laravel Socialite 4.4][laravel-socialite] (or newer)
 
 ## Installation
 
