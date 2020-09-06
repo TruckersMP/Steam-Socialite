@@ -1,5 +1,7 @@
 preset: recommended
 
+risky: true
+
 enabled:
   - concat_with_spaces
   - const_separation
