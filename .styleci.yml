@@ -6,8 +6,10 @@ enabled:
   - concat_with_spaces
   - const_separation
   - const_visibility_required
+  - fully_qualified_strict_types
   - linebreak_after_opening_tag
   - logical_operators
+  - modernize_types_casting
   - multiline_comment_opening_closing
   - no_blank_lines_after_return
   - no_extra_block_blank_lines
@@ -20,6 +22,7 @@ enabled:
   - short_list_syntax
   - simple_to_complex_string_variable
   - strict_comparison
+  - void_return
 
 disabled:
   - align_double_arrow
