@@ -22,7 +22,6 @@ enabled:
   - short_list_syntax
   - simple_to_complex_string_variable
   - strict_comparison
-  - void_return
 
 disabled:
   - align_double_arrow
