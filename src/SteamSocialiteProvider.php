@@ -20,7 +20,7 @@ class SteamSocialiteProvider extends ServiceProvider
     {
         $socialite = $this->app->make(Factory::class);
 
-        $socialite->extend('steam', function ($app) use ($socialite) {
+        $socialite->extend('steam', static function ($app) use ($socialite) {
             $config = $app['config']['services.steam'];
 
             return $socialite->buildProvider(SteamProvider::class, $config);

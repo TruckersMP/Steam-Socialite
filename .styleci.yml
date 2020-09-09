@@ -28,6 +28,7 @@ disabled:
   - concat_without_spaces
   - no_unneeded_control_parentheses
   # PHP documentation should not be that strict
+  - phpdoc_align
   - phpdoc_no_access
   - phpdoc_no_package
   - phpdoc_no_useless_inheritdoc
