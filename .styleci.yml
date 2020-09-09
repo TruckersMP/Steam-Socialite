@@ -16,7 +16,6 @@ enabled:
   - nullable_type_declarations
   - phpdoc_add_missing_param_annotation
   - phpdoc_link_to_see
-  - phpdoc_separation
   - phpdoc_types_null_last
   - short_list_syntax
   - simple_to_complex_string_variable
@@ -31,3 +30,4 @@ disabled:
   - phpdoc_no_package
   - phpdoc_no_useless_inheritdoc
   - phpdoc_order
+  - phpdoc_separation
