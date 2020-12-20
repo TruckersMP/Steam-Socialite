@@ -67,7 +67,7 @@ class SteamProvider extends AbstractProvider
     public function user(): UserContract
     {
         if (!$this->isValid() || $this->getSteamId() === 0) {
-            throw new InvalidStateException();
+            throw new InvalidStateException('Invalid SteamID');
         }
 
         return $this->mapUserToObject($this->getUserByToken($this->getSteamId()));
