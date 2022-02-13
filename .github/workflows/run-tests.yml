@@ -6,14 +6,36 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    strategy:
+      fail-fast: true
+      matrix:
+        php: [7.3, 7.4, 8.0, 8.1]
+        laravel: [6, 7, 8, 9]
+        exclude:
+          - php: 7.3
+            laravel: 9
+          - php: 7.4
+            laravel: 9
+
+    name: PHP ${{ matrix.php }} - Laravel ${{ matrix.laravel }}
+
     steps:
       - uses: actions/checkout@v1
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: dom, curl, libxml, mbstring, redis, zip
+          coverage: none
 
       - name: Validate composer.json and composer.lock
         run: composer validate
 
       - name: Install dependencies
-        run: composer install --prefer-dist --no-progress --no-suggest
+        run:
+          composer require "illuminate/contracts=^${{ matrix.laravel }}" --no-update
+          composer update --prefer-dist --no-interaction --no-progress
 
       - name: Run PHPCS tests
         run: vendor/bin/phpcs src tests/Unit --standard=PSR12
