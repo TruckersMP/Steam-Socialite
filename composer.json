@@ -11,15 +11,21 @@
             "email": "shawnczek@truckersmp.com",
             "homepage": "https://github.com/shawnczek",
             "role": "Developer"
+        },
+        {
+            "name": "Ben Sherred",
+            "email": "ratcho@truckersmp.com",
+            "homepage": "https://github.com/bensherred",
+            "role": "Web Developer"
         }
     ],
     "require": {
         "php": "^7.3|^8.0",
         "ext-json": "*",
         "guzzlehttp/guzzle": "^6.5|^7.0",
-        "illuminate/contracts": "^6.0|^7.0|^8.0",
-        "illuminate/http": "^6.0|^7.0|^8.0",
-        "illuminate/support": "^6.0|^7.0|^8.0",
+        "illuminate/contracts": "^6.0|^7.0|^8.0|^9.0",
+        "illuminate/http": "^6.0|^7.0|^8.0|^9.0",
+        "illuminate/support": "^6.0|^7.0|^8.0|^9.0",
         "laravel/socialite": "^4.4|^5.0"
     },
     "require-dev": {
