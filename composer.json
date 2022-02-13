@@ -11,6 +11,12 @@
             "email": "shawnczek@truckersmp.com",
             "homepage": "https://github.com/shawnczek",
             "role": "Developer"
+        },
+        {
+            "name": "Ben Sherred",
+            "email": "ratcho@truckersmp.com",
+            "homepage": "https://github.com/bensherred",
+            "role": "Web Developer"
         }
     ],
     "require": {
