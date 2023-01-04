@@ -83,14 +83,12 @@ class SteamProvider extends AbstractProvider
      */
     protected function getUserByToken($token): array
     {
-        $params = [
-            'key' => $this->clientSecret,
-            'steamids' => $token,
-        ];
-
-        $userUrl = self::USER_INFO_URL . '?' . http_build_query($params);
-
-        $response = $this->getHttpClient()->get($userUrl);
+        $response = $this->getHttpClient()->get(self::USER_INFO_URL, [
+            'query' => [
+                'key' => $this->clientSecret,
+                'steamids' => $token,
+            ],
+        ]);
 
         $user = json_decode($response->getBody()->getContents(), true);
 
