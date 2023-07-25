@@ -2,7 +2,7 @@
 
 <p align="center">
 <img src="https://github.com/truckersmp/steam-socialite/workflows/Run%20Tests/badge.svg" alt="GitHub Workflow Status">
-<a href="https://github.styleci.io/repos/245795520"><img src="https://github.styleci.io/repos/245795520/shield?branch=master" alt="StyleCI Status"></a>
+<a href="https://github.styleci.io/repos/245795520"><img src="https://github.styleci.io/repos/245795520/shield?style=flat&branch=master" alt="StyleCI Status"></a>
 <a href="https://packagist.org/packages/truckersmp/steam-socialite"><img src="https://poser.pugx.org/truckersmp/steam-socialite/downloads" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/truckersmp/steam-socialite"><img src="https://poser.pugx.org/truckersmp/steam-socialite/v/stable" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/truckersmp/steam-socialite"><img src="https://poser.pugx.org/truckersmp/steam-socialite/v/unstable" alt="Latest Unstable Version"></a>
