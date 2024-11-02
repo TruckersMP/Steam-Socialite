@@ -129,11 +129,11 @@ class OpenID implements OpenIDContract
     protected function getAuthParameters(string $returnTo): array
     {
         return [
-            'openid_ns' => self::OPENID_NS,
-            'openid_mode' => 'checkid_setup',
-            'openid_return_to' => $returnTo,
-            'openid_identity' => self::OPENID_IDENTITY,
-            'openid_claimed_id' => self::OPENID_CLAIMED_ID,
+            'openid.ns' => self::OPENID_NS,
+            'openid.mode' => 'checkid_setup',
+            'openid.return_to' => $returnTo,
+            'openid.identity' => self::OPENID_IDENTITY,
+            'openid.claimed_id' => self::OPENID_CLAIMED_ID,
         ];
     }
 
