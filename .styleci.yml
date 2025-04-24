@@ -15,7 +15,6 @@ enabled:
   - no_extra_block_blank_lines
   - no_useless_else
   - non_printable_character
-  - nullable_type_declarations
   - phpdoc_add_missing_param_annotation
   - phpdoc_link_to_see
   - phpdoc_types_null_last
