@@ -77,6 +77,22 @@ If you do not use auto-discovery, you will need register the provider in your
 Consult the [documentation of Laravel Socialite][laravel-socialite-doc] to
 implement the application functionality.
 
+The callback is only accepted on the URL that the user was redirected from,
+so the `redirect` URL must match the URL your application sees in the callback
+request. If your application runs behind a reverse proxy, make sure to
+[configure trusted proxies][laravel-proxies] so the URL scheme and host are
+detected correctly.
+
+The provider stores a state in the session to protect the login against CSRF.
+If your application does not use sessions, call the `stateless` method on both
+the redirect and the callback:
+
+```php
+return Socialite::driver('steam')->stateless()->redirect();
+
+$user = Socialite::driver('steam')->stateless()->user();
+```
+
 ## Support
 
 If you have any questions about the library, you can create a topic on our
@@ -90,5 +106,6 @@ This package is open-source and is licensed under the [MIT license](LICENSE.md).
 [laravel-socialite]: https://github.com/laravel/socialite
 [laravel-framework]: https://github.com/laravel/framework
 [laravel-socialite-doc]: https://laravel.com/docs/master/socialite
+[laravel-proxies]: https://laravel.com/docs/master/requests#configuring-trusted-proxies
 [steam-dev]: https://steamcommunity.com/dev/
 [developer-forum]: https://forum.truckersmp.com/index.php?/forum/198-developer-portal/

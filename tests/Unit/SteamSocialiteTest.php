@@ -16,13 +16,13 @@ class SteamSocialiteTest extends TestCase
         $request = Request::create('request');
         $provider = new SteamProvider($request, 'client_id', 'client_secret', 'redirect');
 
-        $provider->user();
+        $provider->stateless()->user();
     }
 
     public function testRedirectUrlCanBeChanged()
     {
         $request = Request::create('request');
-        $provider = new SteamProvider($request, 'client_id', 'client_secret', 'redirect');
+        $provider = (new SteamProvider($request, 'client_id', 'client_secret', 'redirect'))->stateless();
 
         $response = $provider->redirect();
         parse_str(explode('?', $response->getTargetUrl())[1], $responseParams);

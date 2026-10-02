@@ -22,13 +22,6 @@ class SteamProvider extends AbstractProvider
     protected const USER_INFO_URL = 'https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002';
 
     /**
-     * Indicates if the session state should be utilized.
-     *
-     * @var bool
-     */
-    protected $stateless = true;
-
-    /**
      * The instance of the OpenID model.
      *
      * @var OpenID
@@ -38,12 +31,20 @@ class SteamProvider extends AbstractProvider
     /**
      * Get the authentication URL for the provider.
      *
-     * @param  string  $state
+     * As OpenID has no state parameter, the state is passed as a part of the return URL.
+     *
+     * @param  string|null  $state
      * @return string
      */
     protected function getAuthUrl($state): string
     {
-        return $this->getOpenID()->getAuthUrl($this->getCodeFields($state)['redirect_uri']);
+        $returnTo = $this->getCodeFields($state)['redirect_uri'];
+
+        if ($state !== null) {
+            $returnTo .= (strpos($returnTo, '?') === false ? '?' : '&') . http_build_query(['state' => $state]);
+        }
+
+        return $this->getOpenID()->getAuthUrl($returnTo);
     }
 
     /**
@@ -66,6 +67,10 @@ class SteamProvider extends AbstractProvider
      */
     public function user(): UserContract
     {
+        if ($this->hasInvalidState()) {
+            throw new InvalidStateException();
+        }
+
         if (!$this->isValid() || $this->getSteamId() === 0) {
             throw new InvalidStateException('Invalid SteamID');
         }
@@ -129,7 +134,11 @@ class SteamProvider extends AbstractProvider
      */
     protected function getSteamId(): int
     {
-        preg_match('#/id/([0-9]{17})#', $this->request->get('openid_claimed_id'), $matches);
+        preg_match(
+            '#^https://steamcommunity\.com/openid/id/(7656119[0-9]{10})/?$#',
+            (string) $this->request->get('openid_claimed_id'),
+            $matches
+        );
 
         return $matches[1] ?? 0;
     }

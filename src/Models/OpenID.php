@@ -80,7 +80,27 @@ class OpenID implements OpenIDContract
     public function validate(Request $request): bool
     {
         // All necessary parameters for the validation request must be presented.
-        if (!$request->has(['openid_assoc_handle', 'openid_signed', 'openid_sig', 'openid_claimed_id'])) {
+        $required = [
+            'openid_assoc_handle',
+            'openid_signed',
+            'openid_sig',
+            'openid_claimed_id',
+            'openid_return_to',
+            'openid_op_endpoint',
+        ];
+
+        if (!$request->has($required)) {
+            return false;
+        }
+
+        // The assertion must have been issued by the OpenID provider used for its validation.
+        if ($request->get('openid_op_endpoint') !== $this->authUrl) {
+            return false;
+        }
+
+        // The OpenID provider only verifies the signature, so it must be checked here that
+        // the assertion was issued for this request and not for another relying party.
+        if (!$this->isValidReturnTo($request)) {
             return false;
         }
 
@@ -95,6 +115,54 @@ class OpenID implements OpenIDContract
         $result = $this->parseResult($response->getBody()->getContents());
 
         return $result->is_valid === 'true';
+    }
+
+    /**
+     * Determine whether the return URL of the assertion matches the current request.
+     *
+     * The scheme, host, port, and path must be the same, and all query parameters of the
+     * return URL must be present in the current request with the same values.
+     *
+     * @param  Request  $request
+     * @return bool
+     */
+    protected function isValidReturnTo(Request $request): bool
+    {
+        $returnTo = parse_url((string) $request->get('openid_return_to'));
+        $current = parse_url($request->url());
+
+        if (!isset($returnTo['scheme'], $returnTo['host'], $current['scheme'], $current['host'])) {
+            return false;
+        }
+
+        if ($this->normalizeUrl($returnTo) !== $this->normalizeUrl($current)) {
+            return false;
+        }
+
+        parse_str($returnTo['query'] ?? '', $expectedQuery);
+        $actualQuery = $request->query->all();
+
+        foreach ($expectedQuery as $key => $value) {
+            if (!array_key_exists($key, $actualQuery) || $actualQuery[$key] !== $value) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * Get the normalized scheme, host, port, and path of the parsed URL.
+     *
+     * @param  array  $url
+     * @return string
+     */
+    protected function normalizeUrl(array $url): string
+    {
+        $scheme = strtolower($url['scheme']);
+        $port = $url['port'] ?? ($scheme === 'https' ? 443 : 80);
+
+        return $scheme . '://' . strtolower($url['host']) . ':' . $port . rtrim($url['path'] ?? '', '/');
     }
 
     /**
